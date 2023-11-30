@@ -1,4 +1,5 @@
 import { Forma } from "forma-embedded-view-sdk/auto";
+import { Transform } from "forma-embedded-view-sdk/dist/internal/scene/render";
 import * as THREE from "three";
 import styles from "../styles.module.css";
 const CHRISTMAS_PALETT = ["#228B22", "#008000", "#006400"];
@@ -42,7 +43,7 @@ function AddMesh() {
     const result = rotationMatrix.multiply(translationMatrix);
     Forma.render.addMesh({
       geometryData: { position, color },
-      transform: result.elements,
+      transform: result.elements as Transform,
     });
   };
 

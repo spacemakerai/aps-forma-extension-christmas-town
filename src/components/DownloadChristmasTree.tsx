@@ -1,9 +1,7 @@
-import * as THREE from "three";
-import { GLTFExporter } from "three/examples/jsm/exporters/GLTFExporter";
 
 const onClick = () => {
   // Create a Christmas tree
-  const treeGeometry = new THREE.ConeGeometry(5, 10, 8);
+/*   const treeGeometry = new THREE.ConeGeometry(5, 10, 8);
   const treeMaterial = new THREE.MeshBasicMaterial({ color: 0x008000 });
   const tree = new THREE.Mesh(treeGeometry, treeMaterial);
 
@@ -29,7 +27,7 @@ const onClick = () => {
     URL.revokeObjectURL(glbUrl);
   });
 };
-
+ */
 const DownloadChristmasTree = () => {
   return (
     <div class="row">
