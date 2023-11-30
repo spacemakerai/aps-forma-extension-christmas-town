@@ -4,13 +4,16 @@
   padding: 15px 20px;
   text-decoration: none;
   color: #fff;
-  background: red;
+  background: #ff0a0a;
   outline: none;
   border-radius: 15px;
   position: relative;
   border: none;
   cursor: pointer;
-  /* margin-top: 20px; */
+  
+  &:hover {
+    background: #d10606;
+  }
 }
 
 .christmasButton::before {
@@ -43,10 +46,10 @@
     var(--color2) 30px,
     var(--color2) 60px
   );
-  /* background-clip: text; */
   color: transparent;
   -webkit-background-clip: text;
   animation: 40s linear 0s infinite move;
+  margin: 0
 }
 
 @keyframes move {
