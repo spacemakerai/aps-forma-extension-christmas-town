@@ -11,7 +11,7 @@ const getColorArray = (position: Float32Array) => {
   for (let i = 0; i < colorArray.length; i += 4) {
     const zValue = position[(i / 4) * 3 + 2];
     const ratio = (zValue - minZ) / (maxZ - minZ);
-    const colour = [200 + 55 * ratio, 200 + 55 * ratio, 200 + 55 * ratio, 255];
+    const colour = [180 + 65 * ratio, 180 + 65 * ratio, 180 + 65 * ratio, 255];
     colorArray.set(colour, i);
   }
   return colorArray;
@@ -37,10 +37,10 @@ const ColourTerrain = () => {
   return (
     <div>
       <button onClick={superClick} className={styles.christmasButton}>
-        Make it snow 
+        Make it snow
       </button>
     </div>
   );
-}
+};
 
 export default ColourTerrain;

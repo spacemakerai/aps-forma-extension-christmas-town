@@ -2,7 +2,7 @@ import { Forma } from "forma-embedded-view-sdk/auto";
 import { useEffect, useState } from "preact/hooks";
 import styles from "../styles.module.css";
 
-const CHRISTMAS_PALETT = ["#D11919", "#CC0000", "#800000", "#228B22", "#008000", "#006400"];
+const CHRISTMAS_PALETT = ["#D11919", "#CC0000", "#800000", "#4c984c", "#008000", "#006400"];
 
 function hexColorToRGB(color: string) {
   return [
@@ -48,6 +48,6 @@ const ColourBuildings = () => {
       </button>
     </div>
   );
-}
+};
 
 export default ColourBuildings;

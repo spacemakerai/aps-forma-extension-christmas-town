@@ -1,7 +1,7 @@
 import { Forma } from "forma-embedded-view-sdk/auto";
 import * as THREE from "three";
 import styles from "../styles.module.css";
-const CHRISTMAS_PALETT = ["#228B22", "#008000", "#006400"];
+const CHRISTMAS_PALETT = ["#faab01", "#faf201"];
 
 function hexColorToRGB(color: string) {
   return [
@@ -23,36 +23,53 @@ const getColorArray = (triangleLength: number) => {
   return colorArray;
 };
 
-function AddMesh() {
+function AddStar() {
   const superClick = async () => {
-    //const group = new THREE.Group();
+    const starShape = new THREE.Shape();
+    starShape.moveTo(0, 2.5);
+    for (let i = 0; i < 10; i++) {
+      const radius = i % 2 === 0 ? 1 : 2.5;
+      const angle = (i / 10) * Math.PI * 2;
+      const x = Math.cos(angle) * radius;
+      const y = Math.sin(angle) * radius;
+      starShape.lineTo(x, y);
+    }
+    starShape.closePath();
 
-    // Create a Christmas tree
-    const treeGeometry = new THREE.ConeGeometry(3, 12, 32).toNonIndexed();
-    const treeMaterial = new THREE.MeshBasicMaterial({ color: 0x008000 });
-    const tree = new THREE.Mesh(treeGeometry, treeMaterial).translateZ(100);
+    const extrusionSettings = {
+      steps: 1,
+      depth: 0.2,
+      bevelEnabled: false,
+    };
 
-    const position = tree.geometry.attributes.position.array as Float32Array;
+    const starGeometry = new THREE.ExtrudeGeometry(starShape, extrusionSettings);
+    const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+    const starMesh = new THREE.Mesh(starGeometry, starMaterial);
+    console.log(starMesh.geometry.attributes.position.array);
+
+    const position = starMesh.geometry.attributes.position.array as Float32Array;
     const color = getColorArray(position.length);
     const x = 250 - Math.random() * 500;
     const y = 250 - Math.random() * 500;
     const elevation = await Forma.terrain.getElevationAt({ x, y });
-    const translationMatrix = new THREE.Matrix4().makeTranslation(x, y, elevation + 6).transpose();
+    const translationMatrix = new THREE.Matrix4()
+      .makeTranslation(x, y, elevation + 50 + 40 * Math.random())
+      .transpose();
     const rotationMatrix = new THREE.Matrix4().makeRotationX(-Math.PI / 2);
-    const result = rotationMatrix.multiply(translationMatrix);
+    rotationMatrix.multiply(translationMatrix);
     Forma.render.addMesh({
       geometryData: { position, color },
-      transform: result.elements,
+      transform: rotationMatrix.elements,
     });
   };
 
   return (
     <div class="row">
       <button onClick={superClick} className={styles.christmasButton}>
-        Add christmas tree
+        Add star
       </button>
     </div>
   );
 }
 
-export default AddMesh;
+export default AddStar;
