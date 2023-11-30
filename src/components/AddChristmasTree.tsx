@@ -22,14 +22,12 @@ const getColorArray = (triangleLength: number) => {
   return colorArray;
 };
 
-export default function SuperButton() {
+export default function AddChristmasTree() {
   const superClick = async () => {
-    console.log("click");
-    const treeGeometry = new THREE.ConeGeometry(5, 10, 8);
+    const treeGeometry = new THREE.ConeGeometry(5, 20, 32);
     const treeMaterial = new THREE.MeshBasicMaterial({ color: 0x008000 });
     const tree = new THREE.Mesh(treeGeometry, treeMaterial);
     const position = tree.geometry.attributes.position.array as Float32Array;
-    console.log(tree, tree.geometry.attributes.position.array);
     const color = getColorArray(position.length);
     Forma.render.addMesh({
       geometryData: { position, color },

@@ -19,12 +19,11 @@ const getColorArray = (triangleLength: number) => {
   );
   for (let i = 0; i < colorArray.length; i += 4) {
     colorArray.set(color, i);
-    console.log(colorArray);
   }
   return colorArray;
 };
 
-export default function ColourBuildings() {
+const ColourBuildings = () => {
   const [buildingPaths, setBuildingPaths] = useState<string[]>([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -44,8 +43,10 @@ export default function ColourBuildings() {
   return (
     <div class="row">
       <weave-button variant={"solid"} onClick={superClick}>
-        Super button
+        Colour buildings
       </weave-button>
     </div>
   );
 }
+
+export default ColourBuildings;
