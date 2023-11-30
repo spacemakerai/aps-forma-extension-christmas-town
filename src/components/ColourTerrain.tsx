@@ -31,7 +31,7 @@ const getColorArray = (position: Float32Array) => {
   return colorArray;
 };
 
-export default function ColourTerrain() {
+const ColourTerrain = () => {
   const [buildingPaths, setBuildingPaths] = useState<string[]>([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -49,10 +49,12 @@ export default function ColourTerrain() {
   };
 
   return (
-    <div class="row">
-      <weave-button variant={"solid"} onClick={superClick}>
-        Make it snow
+    <div style={{ background: "white", colour: "black"}}>
+      <weave-button variant={"solid"} onClick={superClick} >
+        Make it snow 
       </weave-button>
     </div>
   );
 }
+
+export default ColourTerrain;

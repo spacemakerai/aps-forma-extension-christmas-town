@@ -1,6 +1,6 @@
 import { Forma } from "forma-embedded-view-sdk/auto";
 
-export default function SuperButton() {
+export default function AddChristmasTree() {
   const superClick = async () => {
     // read glb file
     const blob = await fetch("./christmas_tree_(11).glb")
