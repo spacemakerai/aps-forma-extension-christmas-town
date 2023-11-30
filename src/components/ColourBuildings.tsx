@@ -1,5 +1,6 @@
 import { Forma } from "forma-embedded-view-sdk/auto";
 import { useEffect, useState } from "preact/hooks";
+import styles from "../styles.module.css";
 
 const CHRISTMAS_PALETT = ["#D11919", "#CC0000", "#800000", "#228B22", "#008000", "#006400"];
 
@@ -42,9 +43,9 @@ const ColourBuildings = () => {
 
   return (
     <div class="row">
-      <weave-button variant={"solid"} onClick={superClick}>
+      <button onClick={superClick} className={styles.christmasButton}>
         Colour buildings
-      </weave-button>
+      </button>
     </div>
   );
 }

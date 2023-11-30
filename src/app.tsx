@@ -2,16 +2,17 @@ import AddChristmasTree from "./components/AddChristmasTree";
 import AddMesh from "./components/AddMesh";
 import ColourBuildings from "./components/ColourBuildings";
 import ColourTerrain from "./components/ColourTerrain";
+import styles from "./styles.module.css";
 // import DownloadChristmasTree from "./components/DownloadChristmasTree";
 
 export default function App() {
   return (
     <>
-      <h1>Try a Christmas town</h1>
+      <h1 className={styles.header}>Try a Christmas town</h1>
       <ColourBuildings />
       {/* <DownloadChristmasTree /> */}
       <AddChristmasTree />
-      <ColourTerrain />¨
+      <ColourTerrain />
       <AddMesh />
       <div style="width:100%;height:0;padding-bottom:56%;position:relative;">
         <iframe
@@ -24,9 +25,7 @@ export default function App() {
           allowFullScreen
         ></iframe>
       </div>
-      <p>
-        <a href="https://giphy.com/gifs/fireplace-yule-log-ZHXz9MZbJI1YA">via GIPHY</a>
-      </p>
+      <p></p>
       {/* <FireplaceSVG /> */}
     </>
   );
