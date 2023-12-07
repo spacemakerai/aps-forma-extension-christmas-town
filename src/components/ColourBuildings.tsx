@@ -42,11 +42,9 @@ const ColourBuildings = () => {
   };
 
   return (
-    <div class="row">
-      <button onClick={superClick} className={styles.christmasButton}>
-        Colour buildings
-      </button>
-    </div>
+    <button onClick={superClick} className={styles.christmasButton}>
+      Colour buildings
+    </button>
   );
 };
 

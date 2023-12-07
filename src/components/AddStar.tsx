@@ -46,7 +46,6 @@ function AddStar() {
     const starGeometry = new THREE.ExtrudeGeometry(starShape, extrusionSettings);
     const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
     const starMesh = new THREE.Mesh(starGeometry, starMaterial);
-    console.log(starMesh.geometry.attributes.position.array);
 
     const position = starMesh.geometry.attributes.position.array as Float32Array;
     const color = getColorArray(position.length);
@@ -65,11 +64,9 @@ function AddStar() {
   };
 
   return (
-    <div class="row">
-      <button onClick={superClick} className={styles.christmasButton}>
-        Add star
-      </button>
-    </div>
+    <button onClick={superClick} className={styles.christmasButton}>
+      Add star
+    </button>
   );
 }
 

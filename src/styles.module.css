@@ -1,3 +1,29 @@
+body {
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+h1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 48px;
+  font-size: 12px;
+}
+
+weave-button {
+  width: 100%;
+}
+
+weave-select {
+  height: 24px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 11px;
+}
+
 .christmasButton {
   display: inline-block;
   min-width: 100px;
@@ -10,6 +36,8 @@
   position: relative;
   border: none;
   cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
 
   &:hover {
     background: #d10606;
@@ -59,4 +87,12 @@
   to {
     background-position: 1000px;
   }
+}
+
+.iframe {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56%;
+  position: relative;
+  margin-top: 10px;
 }

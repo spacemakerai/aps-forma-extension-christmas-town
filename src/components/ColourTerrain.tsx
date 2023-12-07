@@ -35,11 +35,9 @@ const ColourTerrain = () => {
   };
 
   return (
-    <div>
-      <button onClick={superClick} className={styles.christmasButton}>
-        Make it snow
-      </button>
-    </div>
+    <button onClick={superClick} className={styles.christmasButton}>
+      Make it snow
+    </button>
   );
 };
 
