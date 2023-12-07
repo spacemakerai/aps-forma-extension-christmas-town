@@ -48,9 +48,9 @@ function AddMesh() {
   };
 
   return (
-      <button onClick={superClick} className={styles.christmasButton}>
-        Add christmas tree
-      </button>
+    <button onClick={superClick} className={styles.christmasButton}>
+      Add christmas tree
+    </button>
   );
 }
 
