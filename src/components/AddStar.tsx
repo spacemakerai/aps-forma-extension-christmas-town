@@ -1,4 +1,5 @@
 import { Forma } from "forma-embedded-view-sdk/auto";
+import { Transform } from "forma-embedded-view-sdk/dist/internal/scene/render";
 import * as THREE from "three";
 import styles from "../styles.module.css";
 const CHRISTMAS_PALETT = ["#faab01", "#faf201"];
@@ -26,9 +27,9 @@ const getColorArray = (triangleLength: number) => {
 function AddStar() {
   const superClick = async () => {
     const starShape = new THREE.Shape();
-    starShape.moveTo(0, 2.5);
+    starShape.moveTo(0, 5);
     for (let i = 0; i < 10; i++) {
-      const radius = i % 2 === 0 ? 1 : 2.5;
+      const radius = i % 2 === 0 ? 2 : 5;
       const angle = (i / 10) * Math.PI * 2;
       const x = Math.cos(angle) * radius;
       const y = Math.sin(angle) * radius;
@@ -59,7 +60,7 @@ function AddStar() {
     rotationMatrix.multiply(translationMatrix);
     Forma.render.addMesh({
       geometryData: { position, color },
-      transform: rotationMatrix.elements,
+      transform: rotationMatrix.elements as Transform,
     });
   };
 

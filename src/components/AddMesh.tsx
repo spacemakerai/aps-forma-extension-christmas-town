@@ -29,7 +29,7 @@ function AddMesh() {
     //const group = new THREE.Group();
 
     // Create a Christmas tree
-    const treeGeometry = new THREE.ConeGeometry(3, 12, 32).toNonIndexed();
+    const treeGeometry = new THREE.ConeGeometry(6, 24, 32).toNonIndexed();
     const treeMaterial = new THREE.MeshBasicMaterial({ color: 0x008000 });
     const tree = new THREE.Mesh(treeGeometry, treeMaterial).translateZ(100);
 
@@ -38,7 +38,7 @@ function AddMesh() {
     const x = 250 - Math.random() * 500;
     const y = 250 - Math.random() * 500;
     const elevation = await Forma.terrain.getElevationAt({ x, y });
-    const translationMatrix = new THREE.Matrix4().makeTranslation(x, y, elevation + 6).transpose();
+    const translationMatrix = new THREE.Matrix4().makeTranslation(x, y, elevation + 12).transpose();
     const rotationMatrix = new THREE.Matrix4().makeRotationX(-Math.PI / 2);
     const result = rotationMatrix.multiply(translationMatrix);
     Forma.render.addMesh({

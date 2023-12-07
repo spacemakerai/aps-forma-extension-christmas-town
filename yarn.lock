@@ -634,10 +634,10 @@ file-saver@^2.0.5:
   resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.5.tgz#d61cfe2ce059f414d899e9dd6d4107ee25670c38"
   integrity sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==
 
-forma-embedded-view-sdk@^0.37.0:
-  version "0.37.0"
-  resolved "https://registry.yarnpkg.com/forma-embedded-view-sdk/-/forma-embedded-view-sdk-0.37.0.tgz#1bbc0b842870a625016c17e69381771dd91e7182"
-  integrity sha512-6FKQqGfy4Exulx3/B2A2Au7rPrAEF7qbZ+FXj/XQOcwvLsGGDaYBMyfOZ9XM7Bg1H1WQ5eoFpyMY23Z5EbgX6w==
+forma-embedded-view-sdk@^0.39.0:
+  version "0.39.0"
+  resolved "https://registry.yarnpkg.com/forma-embedded-view-sdk/-/forma-embedded-view-sdk-0.39.0.tgz#e8bd028911c7c29782107d03a01310a7ca436bbf"
+  integrity sha512-ECIrK4kPhECaxJeXm/yTkgtZ0pkoOMaIgiWGg5jdr9bdQLDGCOPZL7CYbBY7PtOay+NPU10RTQj6M/f5Ac+Z0g==
 
 fsevents@~2.3.2, fsevents@~2.3.3:
   version "2.3.3"
