@@ -23,8 +23,6 @@ export default function App() {
           allowFullScreen
         ></iframe>
       </div>
-      <p></p>
-      {/* <FireplaceSVG /> */}
     </>
   );
 }
