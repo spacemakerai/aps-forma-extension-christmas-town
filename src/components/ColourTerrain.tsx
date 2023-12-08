@@ -3,16 +3,17 @@ import styles from "../styles.module.css";
 
 const ColourTerrain = () => {
   const superClick = async () => {
-    // Create canvas
+    // Create canvas and make it the size of the terrain
     const canvas = document.createElement("canvas");
-    canvas.width = 1000;
-    canvas.height = 1000;
+    const bbox = await Forma.terrain.getBbox();
+    canvas.width = bbox.max.x * 2;
+    canvas.height = bbox.max.y * 2;
 
     // Fill canvas with white color (snow)
     const ctx = canvas.getContext("2d");
     if (ctx) {
       ctx.fillStyle = "white";
-      ctx.fillRect(0, 0, 1000, 1000);
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Add canvas as ground texture to position (0, 0) in the local coordinate system.
       // The texture will cover a 100x100 meter square area on the terrain,
