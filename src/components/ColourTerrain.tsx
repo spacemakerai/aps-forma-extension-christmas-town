@@ -1,37 +1,29 @@
 import { Forma } from "forma-embedded-view-sdk/auto";
-import { useEffect, useState } from "preact/hooks";
 import styles from "../styles.module.css";
 
-const getColorArray = (position: Float32Array) => {
-  const colorArray = new Uint8Array((position.length / 3) * 4);
-  const zCoordinates = position.filter((_, index) => index % 3 === 2);
-  const maxZ = Math.max(...zCoordinates);
-  const minZ = Math.min(...zCoordinates);
-
-  for (let i = 0; i < colorArray.length; i += 4) {
-    const zValue = position[(i / 4) * 3 + 2];
-    const ratio = (zValue - minZ) / (maxZ - minZ);
-    const colour = [180 + 65 * ratio, 180 + 65 * ratio, 180 + 65 * ratio, 255];
-    colorArray.set(colour, i);
-  }
-  return colorArray;
-};
-
 const ColourTerrain = () => {
-  const [buildingPaths, setBuildingPaths] = useState<string[]>([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      Forma.geometry.getPathsByCategory({ category: "terrain" }).then(setBuildingPaths);
-    };
-    fetchData();
-  }, []);
-
   const superClick = async () => {
-    buildingPaths.forEach(async (path) => {
-      const position = await Forma.geometry.getTriangles({ path });
-      const color = getColorArray(position);
-      Forma.render.updateMesh({ id: path, geometryData: { position, color } });
-    });
+    // Create canvas
+    const canvas = document.createElement("canvas");
+    canvas.width = 1000;
+    canvas.height = 1000;
+
+    // Fill canvas with white color (snow)
+    const ctx = canvas.getContext("2d");
+    if (ctx) {
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, 1000, 1000);
+
+      // Add canvas as ground texture to position (0, 0) in the local coordinate system.
+      // The texture will cover a 100x100 meter square area on the terrain,
+      // with lower left corner in (x: -50, y: -50) and upper right corner in (x: 50, y: 50).
+      await Forma.terrain.groundTexture.add({
+        name: "addSnow",
+        canvas,
+        position: { x: 0, y: 0, z: 1 },
+        scale: { x: 1, y: 1 },
+      });
+    }
   };
 
   return (
