@@ -26,21 +26,19 @@ const getColorArray = (triangleLength: number) => {
 
 function AddMesh() {
   const superClick = async () => {
-    //const group = new THREE.Group();
-
     // Create a Christmas tree
     const treeGeometry = new THREE.ConeGeometry(6, 24, 32).toNonIndexed();
     const treeMaterial = new THREE.MeshBasicMaterial({ color: 0x008000 });
-    const tree = new THREE.Mesh(treeGeometry, treeMaterial).translateZ(100);
+    const tree = new THREE.Mesh(treeGeometry, treeMaterial);
 
     const position = tree.geometry.attributes.position.array as Float32Array;
     const color = getColorArray(position.length);
     const x = 250 - Math.random() * 500;
     const y = 250 - Math.random() * 500;
     const elevation = await Forma.terrain.getElevationAt({ x, y });
-    const translationMatrix = new THREE.Matrix4().makeTranslation(x, y, elevation + 12).transpose();
-    const rotationMatrix = new THREE.Matrix4().makeRotationX(-Math.PI / 2);
-    const result = rotationMatrix.multiply(translationMatrix);
+    const translationMatrix = new THREE.Matrix4().makeTranslation(x, y, elevation + 12);
+    const rotationMatrix = new THREE.Matrix4().makeRotationX(Math.PI / 2);
+    const result = translationMatrix.multiply(rotationMatrix);
     Forma.render.addMesh({
       geometryData: { position, color },
       transform: result.elements as Transform,

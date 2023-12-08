@@ -27,13 +27,13 @@ const getColorArray = (triangleLength: number) => {
 function AddStar() {
   const superClick = async () => {
     const starShape = new THREE.Shape();
-    starShape.moveTo(0, 5);
+    starShape.moveTo(0, 0);
     for (let i = 0; i < 10; i++) {
       const radius = i % 2 === 0 ? 2 : 5;
       const angle = (i / 10) * Math.PI * 2;
       const x = Math.cos(angle) * radius;
       const y = Math.sin(angle) * radius;
-      starShape.lineTo(x, y);
+      i === 0 ? starShape.moveTo(x, y) : starShape.lineTo(x, y);
     }
     starShape.closePath();
 
@@ -52,14 +52,16 @@ function AddStar() {
     const x = 250 - Math.random() * 500;
     const y = 250 - Math.random() * 500;
     const elevation = await Forma.terrain.getElevationAt({ x, y });
-    const translationMatrix = new THREE.Matrix4()
-      .makeTranslation(x, y, elevation + 50 + 40 * Math.random())
-      .transpose();
+    const translationMatrix = new THREE.Matrix4().makeTranslation(
+      x,
+      y,
+      elevation + 50 + 40 * Math.random(),
+    );
     const rotationMatrix = new THREE.Matrix4().makeRotationX(-Math.PI / 2);
-    rotationMatrix.multiply(translationMatrix);
+    translationMatrix.multiply(rotationMatrix);
     Forma.render.addMesh({
       geometryData: { position, color },
-      transform: rotationMatrix.elements as Transform,
+      transform: translationMatrix.elements as Transform,
     });
   };
 
