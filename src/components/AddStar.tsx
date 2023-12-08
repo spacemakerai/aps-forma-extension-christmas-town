@@ -49,8 +49,9 @@ function AddStar() {
 
     const position = starMesh.geometry.attributes.position.array as Float32Array;
     const color = getColorArray(position.length);
-    const x = 250 - Math.random() * 500;
-    const y = 250 - Math.random() * 500;
+    const bbox = await Forma.terrain.getBbox();
+    const x = bbox.max.x - Math.random() * bbox.max.x * 2;
+    const y = bbox.max.y - Math.random() * bbox.max.y * 2;
     const elevation = await Forma.terrain.getElevationAt({ x, y });
     const translationMatrix = new THREE.Matrix4().makeTranslation(
       x,
